@@ -1,23 +1,16 @@
 #include "holberton.h"
 
 /**
- * _isalpha - check the code for Holberton School students.
+ * _isalpha - checks for alphabetic characters.
+ * @c: the character to be checked.
  *
- * @c: is c an integer argument
- *
- * Return: Always 0.
+ * Return: 1 if letter otherwise 0.
  */
-
 int _isalpha(int c)
 {
-
-	if (c >= 97 && c <= 122)
-	{
+	if ((c >= 65 || c >= 97) && (c <= 91 || c <= 122))
 		return (1);
-	}
-	else if (c >= 65 && c <= 90)
-	{
-		return (1);
-	}
-	return (0);
+	else
+		return (0);
 }
+
