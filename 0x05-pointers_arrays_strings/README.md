@@ -1,1 +1,1 @@
-Pointers, Arrays and Strings in C
+My pointers, array and string task
