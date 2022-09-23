@@ -1,23 +1,21 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- * _strcmp - compare two strings.
- * @s1: string 1
- * @s2: string 2
- * Return: Always 0.
+ * _strcmp - compare two strings
+ * @s1: one string
+ * @s2: one string
+ * Return: int that tells num spaces in between
  */
+
 int _strcmp(char *s1, char *s2)
 {
-	int i;
-	int res;
+	int i = 0;
 
-	i = 0;
-	while (s1[i] != '\0' && s1[i] == s2[i])
-	{
+	while (*(s1 + i) == *(s2 + i) && *(s1 + i))
 		i++;
-	}
-	res = s1[i] - s2[i];
 
-	return (res);
-
+	if (*(s2 + i))
+		return (*(s1 + i) - *(s2 + i));
+	else
+		return (0);
 }
