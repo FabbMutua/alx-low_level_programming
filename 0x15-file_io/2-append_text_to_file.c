@@ -1,51 +1,31 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * _strlen - find length of string
- * @str: string
- * Return: length
+ * append_text_to_file - appends text at the end of a file
+ * @filename: filename.
+ * @text_content: added content.
+ * Return: 1 if the file exists. -1 if the fails does not exist
+ * or if it fails.
  */
-int _strlen(char *str)
-{
-	int len;
 
-	for (len = 0; str[len] != '\0'; len++)
-		;
-
-	return (len);
-}
-
-/**
- * append_text_to_file - append text and only if file exists
- * @filename: file
- * @text_content: appends this content into file
- * Return: 1 on success, -1 on error
- */
 int append_text_to_file(const char *filename, char *text_content)
+
 {
-	int fd;
-	int n_wrote;
-
-	if (!filename)
-		return (-1);
-
-	fd = open(filename, O_WRONLY | O_APPEND);
-	if (fd == -1)
-		return (-1);
-
-	if (!text_content)
-	{
-		close(fd);
-		return (1);
-	}
-
-	n_wrote = write(fd, text_content, _strlen(text_content));
-	if (n_wrote == -1)
-	{
-		close(fd);
-		return (-1);
-	}
-
-	close(fd);
-	return (1);
+int fd;
+int nchars;
+int wrt;
+if (!filename)
+return (-1);
+fd = open(filename, O_CREAT | O_WRONLY | O_APPEND);
+if (fd == -1)
+return (-1);
+if (text_content)
+{
+for (nchars = 0; text_content[nchars]; nchars++);
+wrt = write(fd, text_content, nchars);
+if (wrt == -1)
+return (-1);
+}
+close(fd);
+return (1);
 }
